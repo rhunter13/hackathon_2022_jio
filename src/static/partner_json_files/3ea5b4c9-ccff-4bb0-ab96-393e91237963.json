@@ -1,0 +1,165 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/bifrost-partner-registry-service/v1/partner": {
+      "post": {
+        "summary": "Partner Register",
+        "operationId": "partner_register_v1_partner_post",
+        "servers": [
+          {
+            "url": "http://20.204.239.8"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRegisterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "PartnerAddIntegrationRequest": {
+        "title": "PartnerAddIntegrationRequest",
+        "required": [
+          "service_name",
+          "kind_of_integration",
+          "type",
+          "partner_type",
+          "jhh_association",
+          "provider_identity",
+          "role_name"
+        ],
+        "type": "object",
+        "properties": {
+          "service_name": {
+            "title": "Service Name",
+            "type": "string"
+          },
+          "kind_of_integration": {
+            "title": "Kind Of Integration",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "partner_type": {
+            "title": "Partner Type",
+            "type": "string"
+          },
+          "jhh_association": {
+            "title": "Jhh Association",
+            "type": "string"
+          },
+          "provider_identity": {
+            "title": "Provider Identity",
+            "type": "string"
+          },
+          "role_name": {
+            "title": "Role Name",
+            "type": "string"
+          }
+        }
+      },
+      "PartnerRegisterRequest": {
+        "title": "PartnerRegisterRequest",
+        "required": [
+          "company_name",
+          "first_name",
+          "last_name",
+          "email",
+          "mobile_no"
+        ],
+        "type": "object",
+        "properties": {
+          "company_name": {
+            "title": "Company Name",
+            "type": "string"
+          },
+          "first_name": {
+            "title": "First Name",
+            "type": "string"
+          },
+          "last_name": {
+            "title": "Last Name",
+            "type": "string"
+          },
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "mobile_no": {
+            "title": "Mobile No",
+            "type": "string"
+          }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

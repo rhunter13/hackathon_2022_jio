@@ -1,0 +1,5 @@
+[global]
+index-url = https://pypi.org/simple
+trusted-host = pypi.org
+               nexus.rjil.ril.com
+extra-index-url = http://jioai-pypi:pypi%40987@nexus.rjil.ril.com:9081/repository/jioai-pypi-group/simple
